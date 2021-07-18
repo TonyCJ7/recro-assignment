@@ -1,0 +1,72 @@
+// Transition mixin
+@mixin transition($transition...) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+// Transform mixin
+@mixin transform($transform...) {
+  -moz-transform: $transform;
+  -o-transform: $transform;
+  -webkit-transform: $transform;
+  transform: $transform;
+}
+
+// User select mixin
+@mixin user-select($value) {
+  -webkit-touch-callout: $value; /* iOS Safari */
+  -webkit-user-select: $value; /* Safari */
+  -khtml-user-select: $value; /* Konqueror HTML */
+  -moz-user-select: $value; /* Old versions of Firefox */
+  -ms-user-select: $value; /* Internet Explorer/Edge */
+  user-select: $value; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+// Box Shadow mixin
+@mixin boxshadow($boxshadow...) {
+  -moz-box-shadow: $boxshadow;
+  -o-box-shadow: $boxshadow;
+  -webkit-box-shadow: $boxshadow;
+  box-shadow: $boxshadow;
+}
+
+@mixin custom-scrollbar($visibility) {
+  @if $visibility {
+    &::-webkit-scrollbar {
+      visibility: $visibility;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 0.4rem;
+    }
+    @if $visibility == hidden {
+      scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    } @else {
+      scrollbar-color: #d7e4ef;
+    }
+    &::-webkit-scrollbar-thumb {
+      visibility: $visibility;
+      background: #d7e4ef;
+      border: solid 0.125rem transparent;
+      border-radius: 0.75rem;
+      background-clip: content-box;
+    }
+  } @else {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &::-webkit-scrollbar-thumb {
+      display: none;
+    }
+    scrollbar-width: none;
+  }
+}
+
+@mixin middle-of-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

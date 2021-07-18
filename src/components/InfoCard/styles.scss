@@ -1,0 +1,70 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/utils.scss";
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% / 3 - 1rem); /*3 card per row with 1 rem space between each*/
+  height: calc(50% - 0.5rem);
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  background-color: white;
+  border-radius: 0.625rem;
+  @include boxshadow(0 0 10px 0px #c3c3c3);
+  @include transition(transform 0.2s ease-in-out);
+  &:hover {
+    @include transform(scale(1.02));
+  }
+  &__title {
+    min-height: 2.5rem;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid #dff0ff;
+  }
+  &__content {
+    padding: 1rem;
+    overflow: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    &__body {
+      @include custom-scrollbar(visible);
+      flex: 1;
+      overflow-y: auto;
+    }
+  }
+
+  &__subtext {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    &__label {
+      font-weight: 600;
+    }
+
+    &__value {
+      flex: 1;
+      margin-left: calculateRem(4);
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .info-card {
+    width: calc(50% - 1rem); /*2 card per row with 1 rem space between each*/
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .info-card {
+    width: 100%; /*1 card per row*/
+    margin-left: 0;
+  }
+}

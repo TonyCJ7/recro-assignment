@@ -1,0 +1,63 @@
+@import "../../styles/mixins.scss";
+
+%loader-properties {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: #ff7b7b;
+  color: #ff7b7b;
+  animation: loader-animation 0.5s infinite linear alternate;
+}
+
+.loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  &__container {
+    @include middle-of-wrapper;
+
+    &__content::before,
+    &__content::after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 0;
+    }
+
+    &__content,
+    &__content::before,
+    &__content::after {
+      @extend %loader-properties;
+    }
+
+    &__content {
+      position: relative;
+      animation-delay: 0.25s;
+    }
+
+    &__content::before {
+      left: -1.5rem;
+      animation-delay: 0s;
+    }
+
+    &__content::after {
+      left: 1.5rem;
+      animation-delay: 0.5s;
+    }
+  }
+}
+
+@keyframes loader-animation {
+  0% {
+    background-color: #f74e4e;
+  }
+  50%,
+  100% {
+    background-color: #ffd4d4;
+  }
+}
